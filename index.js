@@ -6,7 +6,7 @@ const app = express();
 const path = require('path');
 const router = express.Router();
 
-// Configuração do multer para lidar com o upload de arquivos
+// upload de arquivos
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'contato.html'));
 });
 
-// Rota para lidar com o envio do e-mail
+// Rota para enviar o e-mail
 router.post('/send-mail', upload.single('attachment'), (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'Gmail',
@@ -38,19 +38,21 @@ router.post('/send-mail', upload.single('attachment'), (req, res) => {
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.log('Erro ao enviar o e-mail:', error);
-      res.send('Erro ao enviar o e-mail');
+      console.log('Não foi possivel enviar o e-mail:', error);
+      res.send('Não foi possivel enviar o e-mail');
     } else {
-      console.log('E-mail enviado com sucesso:', info.response);
+      console.log('E-mail enviado:', info.response);
       res.redirect("/");
     }
   });
 });
 
+//carregando imagens e css 
 app.use(express.static(__dirname));
+//rota padrao da pagina
 app.use('/', router);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-  console.log(`servidor rodando na porta ${PORT}`);
+  console.log(`servidor rodando na porta: ${PORT}`);
 });
