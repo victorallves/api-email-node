@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato | Rede</title>
+    <link rel="icon" href="./img/badminton-svg.svg">
+    <link rel="stylesheet" href="./css/contato.css">
+</head>
+
+<body>
+  <section class="principal">
+    <header>
+        <div class="center menu-container">
+            <div class="logo">
+                <h3><i class="fa-solid fa-volleyball"></i>Rede</h3><i class=""></i>
+            </div>
+            <div class="menu">
+                <a href="#">Home</a>
+                <a href="#">Agende seu Horario</a>
+                <a class="menu-ativo" href="contato.html">Contato</a>
+                 <a href="#">Cadastros</a>
+            </div>
+        </div>
+    </header>
+    <div class="fundo-form">
+      <form action="/send-mail" method="POST" enctype="multipart/form-data" class="formulario-container">
+      
+        <label for="topic">Assunto:</label>
+        <input type="text" name="topic" placeholder="Assunto do Email" required><br>
+
+        <label for="Email">Email:</label>
+        <input type="email"  name="recipient" placeholder="nome@dominio" required><br>
+
+        <label> Faça upload da sua imagem: </label>
+        <input type="file" name="attachment""><br>
+      
+        <textarea name="message" rows="3" cols="28" placeholder="escreva a sua mensagem!!" required></textarea>
+
+        <input type="submit" value="Enviar">
+      </form>
+   </div>
+  </section>
+
+  <footer><p>Todos os direitos reservados!</p></footer>
+  <script src="https://kit.fontawesome.com/92e057dee7.js"  type="text/javascript" crossorigin = "anonymous"></script>
+</body>
